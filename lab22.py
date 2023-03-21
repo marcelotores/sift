@@ -22,17 +22,18 @@ kp1, des1 = sift.detectAndCompute(img1, None)
 kp2, des2 = sift.detectAndCompute(img2, None)
 
 bf = cv.BFMatcher()
-matches = bf.knnMatch(des1, des2, k=2)
+matches = bf.knnMatch(des1, des2, k=3)
 
 # Apply ratio test
 good = []
-for m,n in matches:
-    if m.distance < 0.75*n.distance:
+for m, n, j in matches:
+    #print(n)
+    if m.distance < 0.75 * n.distance:
         good.append([m])
 
 if (len(good) > 7):  # Threshold for number of matched features
     print('ok')
-
+print(matches)
 
 
 # cv.drawMatchesKnn expects list of lists as matches.
