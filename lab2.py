@@ -16,11 +16,6 @@ img1 = cv.imread(imagem1, cv.IMREAD_GRAYSCALE)          # queryImage
 img2 = cv.imread(imagem2, cv.IMREAD_GRAYSCALE)          # trainImage
 
 
-#img = cv.imread('images/circulo.png')
-
-#img = cv.imread('images/44.jpeg')
-#gray= cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-
 sift = cv.SIFT_create()
 
 kp1, des1 = sift.detectAndCompute(img1, None)
@@ -34,6 +29,10 @@ good = []
 for m,n in matches:
     if m.distance < 0.75*n.distance:
         good.append([m])
+
+if (len(good) > 7):  # Threshold for number of matched features
+    print('ok')
+
 
 
 # cv.drawMatchesKnn expects list of lists as matches.
