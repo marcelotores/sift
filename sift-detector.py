@@ -12,7 +12,10 @@ img = cv.imread(imagem)
 gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
 sift = cv.SIFT_create()
+
+apenas_kp = sift.detect(gray,None)
 kp, des = sift.detectAndCompute(gray, None)
+
 
 # apenas o ponto chave
 img = cv.drawKeypoints(gray, kp, img)
