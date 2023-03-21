@@ -26,15 +26,14 @@ matches = bf.knnMatch(des1, des2, k=3)
 
 # Apply ratio test
 good = []
-for m, n, j in matches:
+for m,n, j in matches:
     #print(n)
     if m.distance < 0.75 * n.distance:
         good.append([m])
 
-if (len(good) > 7):  # Threshold for number of matched features
+if len(good) > 7:  # Threshold for number of matched features
     print('ok')
 print(matches)
-
 
 # cv.drawMatchesKnn expects list of lists as matches.
 img3 = cv.drawMatchesKnn(img1, kp1, img2, kp2, good, None, flags=cv.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
