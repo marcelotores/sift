@@ -13,6 +13,8 @@ image = cv2.imread(imagem1, cv2.IMREAD_GRAYSCALE)
 kps = sift.detect(image)
 # rank keypoints by importance (response value)
 # and pick top 4 keypoints results
+
+print(kps)
 n = 4
 kps = sorted(kps, key=lambda x: -x.response)[:n]
 print(kps)
@@ -28,5 +30,5 @@ if vector.size < (n*128):
 print(len(vector))
 # 512
 print(vector[:10])
-print(vector)
+#print(vector)
 # [ 0.  0.  0.  0.  0.  0.  0.  1. 21.  1.]
