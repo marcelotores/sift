@@ -39,17 +39,16 @@ if len(good) > MIN_MATCH_COUNT:
     #dst_pts = np.array([[318, 256], [534, 372], [316, 670], [73, 473]])
     print(src_pts)
     M, mask = cv.findHomography(src_pts, dst_pts, cv.RANSAC, 5.0)
-
+    print(M)
+    print('----------------')
+    print(mask)
     im_out = cv.warpPerspective(img1, M, (img2.shape[1], img2.shape[0]))
 
     # Display images
-    #cv.imshow("Source Image", img1)
-    #cv.imshow("Destination Image", img2)
     cv.imshow("Imagem Fonte", cv.resize(img1, (660, 540)))
     cv.imshow("Imagem Destino", cv.resize(im_out, (660, 540)))
     cv.waitKey(0)
 
-    cv.waitKey(0)
 else:
     print( "Not enough matches are found - {}/{}".format(len(good), MIN_MATCH_COUNT) )
     matchesMask = None
