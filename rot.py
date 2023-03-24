@@ -13,9 +13,10 @@ def rotaciona_imagem(imagem):
     img_ccw_90 = cv.rotate(img, cv.ROTATE_90_COUNTERCLOCKWISE)
     img_cw_180 = cv.rotate(img, cv.ROTATE_180)
 
-    cv.imwrite(f'images/imagens-deformadas/{nome_imagem[:-4]}90.jpg', img_cw_90)
-    cv.imwrite(f'images/imagens-deformadas/{nome_imagem[:-4]}180.jpg', img_cw_180)
-    cv.imwrite(f'images/imagens-deformadas/{nome_imagem[:-4]}270.jpg', img_ccw_90)
+    cv.imwrite(f'images/imagens-rot/{nome_imagem[:-4]}.jpg', img)
+    cv.imwrite(f'images/imagens-rot/{nome_imagem[:-4]}90.jpg', img_cw_90)
+    cv.imwrite(f'images/imagens-rot/{nome_imagem[:-4]}180.jpg', img_cw_180)
+    cv.imwrite(f'images/imagens-rot/{nome_imagem[:-4]}270.jpg', img_ccw_90)
 
 caminho = 'images/imagens-correspondencias'
 

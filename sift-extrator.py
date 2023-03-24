@@ -9,7 +9,7 @@ def extrator_de_caracteristicas(imagem1):
 
     cat1 = 'motor'
     cat2 = 'sensor'
-    cat3 = 'bal'
+    cat3 = 'tanque'
 
     sift = cv2.SIFT_create()
 
@@ -37,23 +37,28 @@ def extrator_de_caracteristicas(imagem1):
 
 
     if cat1 in imagem1:
-        cat = '1:'
+        cat = 'c1'
     elif cat2 in imagem1:
-        cat = '2:'
+        cat = 'c2'
     elif cat3 in imagem1:
-        cat = '3:'
+        cat = 'c3'
     else:
         cat = False
+    val = ''
+    for i in vector:
+        val = val + str(i) + ', '
+    #print(val)
+    #print('\n\n')
 
     with open("features-4.txt", "a") as file:
         # Writing data to a file
-        file.write(cat)
-        file.write(str(vector)+"\n\n")
+        file.write(val)
+        file.write(f"{cat}\n")
 
 
     #return vector
 
-caminho = 'images/imagens-correspondencias'
+caminho = 'images/imagens-rot'
 
 for filename in listdir(caminho):
     if filename.endswith(''):
